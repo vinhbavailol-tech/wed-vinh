@@ -1,293 +1,117 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎲 Game Tài Xỉu Online 🎲</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình Lớp 41T2</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 40px; 
+            color: #333; 
+        }
 
-<style>
-body {
-  background: radial-gradient(circle at center, #3b0000, #000);
-  color: #fff;
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  overflow-x: hidden;
-}
-h1 {
-  margin-top: 15px;
-  color: gold;
-  text-shadow: 0 0 20px gold;
-}
-.container {
-  background: rgba(40,0,0,0.8);
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-  box-shadow: 0 0 25px gold;
-}
-.flex {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.box {
-  width: 46%;
-  background: #660000;
-  border-radius: 10px;
-  padding: 15px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.box:hover {
-  background: #990000;
-}
-button {
-  background: gold;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  margin: 5px;
-}
-button:hover { background: orange; }
+        /* 1. ĐỊNH DẠNG TIÊU ĐỀ H1 (YÊU CẦU ĐẶC BIỆT) */
+        h1 {
+            color: #e74c3c; /* Màu chữ đỏ */
+            font-size: 2.2em; /* Kích thước lớn để nổi bật */
+            text-align: center; /* Căn giữa */
+            font-family: Arial, sans-serif; /* Phông chữ Arial */
+            font-style: italic; /* In nghiêng */
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c; /* Đường viền đỏ phân cách */
+            margin-bottom: 40px;
+        }
 
-.money {
-  font-size: 1.1em;
-  color: #ffcc33;
-}
-
-#dice-area {
-  margin: 25px auto;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: #222;
-  box-shadow: 0 0 25px gold;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.dice {
-  width: 55px;
-  height: 55px;
-  background: white;
-  color: black;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 2em;
-  margin: 5px;
-  z-index: 2;
-}
-
-#bowl {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle at top, #444, #111);
-  position: absolute;
-  top: -10px;
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-  z-index: 5;
-}
-
-#bowl.open {
-  transform: translateY(-250px);
-  opacity: 0;
-}
-
-#timer {
-  font-size: 1.4em;
-  color: gold;
-  margin-top: 5px;
-}
-#result {
-  margin-top: 15px;
-  font-size: 1.6em;
-  text-shadow: 0 0 15px gold;
-}
-#history {
-  margin-top: 10px;
-  font-size: 1em;
-  opacity: 0.8;
-}
-</style>
+        h2 { color: #2c3e50; margin-top: 30px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        
+        /* Định dạng Bảng Điểm */
+        table { border-collapse: collapse; width: 60%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; color: #2c3e50; }
+        
+        /* Định dạng Form */
+        .form-section { border: 1px solid #3498db; padding: 20px; border-radius: 8px; background-color: #f9f9f9; }
+        .form-section input[type="submit"] { background-color: #3498db; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 5px; }
+        .form-section label { font-weight: bold; display: block; margin-top: 10px; }
+    </style>
 </head>
 <body>
 
-<h1>🎲 TÀI XỈU ONLINE 🎲</h1>
+    <h1>Tôi là học sinh lớp 41T2</h1>
 
-<div class="container">
-  <div class="money">💰 Số dư: <span id="balance"></span></div>
+    ---
+    
+    <h2>2. Thông báo từ Ban Cán sự Lớp</h2>
+    <p>Lớp 41T2 chúng ta sẽ tổ chức buổi học phụ đạo môn Toán vào chiều thứ Bảy tuần này. Đề nghị các bạn tham gia đầy đủ để cùng nhau ôn tập và nâng cao kiến thức trước kỳ thi giữa kỳ sắp tới. Việc học nhóm rất quan trọng để đảm bảo tất cả mọi người cùng tiến bộ.</p>
+    
+    ---
 
-  <div class="flex">
-    <div class="box" id="taiBox" onclick="selectSide('tai')">
-      <h2>TÀI</h2>
-      <div id="totalTai">0</div>
+    <h2>3. Danh sách Công việc Cần làm</h2>
+    <h3>Công việc theo thứ tự ưu tiên:</h3>
+    <ol>
+        <li>Hoàn thành bài tập lớn môn Lập trình.</li>
+        <li>Đăng ký thi IT .</li>
+        <li>Tổ chức hoạt động ngoại khóa cho cả lớp.</li>
+    </ol>
+    
+    ---
+
+    <h2>4. Bảng Điểm Thống kê Môn học</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Môn học</th>
+                <th>Tín chỉ</th>
+                <th>Giảng viên</th>
+                <th>Phòng học</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cấu trúc Dữ liệu</td>
+                <td>3</td>
+                <td>Thầy Sơn</td>
+                <td>A201</td>
+            </tr>
+            <tr>
+                <td>Quản trị mạng website/td>
+                <td>2</td>
+                <td>Thầy Minh</td>
+                <td>B305</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    ---
+
+    <h2>5. Hình ảnh</h2>
+    <p>Hình ảnh buổi sinh hoạt lớp 41T2.</p>
+    <img src="hinh_anh_lop_hoc_tai_lieu_lop.jpg" alt="Ảnh kỷ niệm lớp 41T2" width="400">
+    
+    ---
+
+    <h2>10. Đăng ký Phản hồi Môn học</h2>
+    <div class="form-section">
+        <form action="/submit-feedback" method="post">
+            <label for="mon">Môn học cần góp ý:</label>
+            <input type="text" id="mon" name="mon" required><br>
+            
+            <label for="muc_do">Mức độ hài lòng:</label>
+            <select id="muc_do" name="muc_do">
+                <option value="rat_tot">Rất Tốt</option>
+                <option value="tot">Tốt</option>
+                <option value="binh_thuong">Bình thường</option>
+                <option value="can_cai_thien">Cần cải thiện</option>
+            </select><br><br>
+            
+            <label for="gop_y">Góp ý chi tiết cho lớp học:</label>
+            <textarea id="gop_y" name="gop_y" rows="4" cols="50"></textarea><br><br>
+            
+            <input type="submit" value="Gửi Phản hồi">
+        </form>
     </div>
-    <div class="box" id="xiuBox" onclick="selectSide('xiu')">
-      <h2>XỈU</h2>
-      <div id="totalXiu">0</div>
-    </div>
-  </div>
 
-  <div id="timer">⏳ Thời gian: <span id="countdown">20</span>s</div>
-
-  <div id="dice-area">
-    <div id="bowl"></div>
-    <div class="dice" id="dice1">?</div>
-    <div class="dice" id="dice2">?</div>
-    <div class="dice" id="dice3">?</div>
-  </div>
-
-  <div id="betButtons">
-    <button onclick="setBet(1000)">1K</button>
-    <button onclick="setBet(10000)">10K</button>
-    <button onclick="setBet(50000)">50K</button>
-    <button onclick="setBet(100000)">100K</button>
-    <button onclick="setBet(500000)">500K</button>
-    <button onclick="setBet(1000000)">1M</button>
-    <button onclick="setBet(5000000)">5M</button>
-    <button onclick="setBet(10000000)">10M</button>
-    <button onclick="allIn()">ALL-IN</button>
-  </div>
-
-  <div id="result">Đặt cược để bắt đầu!</div>
-  <div id="history"></div>
-</div>
-
-<!-- Âm thanh -->
-<audio id="shakeSound" src="https://www.myinstants.com/media/sounds/dice-roll.mp3"></audio>
-<audio id="openSound" src="https://cdn.pixabay.com/download/audio/2021/11/02/audio_6b8b9b56d3.mp3?filename=swipe-whoosh-1-111977.mp3"></audio>
-<audio id="winSound" src="https://www.myinstants.com/media/sounds/win.mp3"></audio>
-<audio id="loseSound" src="https://www.myinstants.com/media/sounds/lose.mp3"></audio>
-<audio id="bgm" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c1dfc72a9b.mp3?filename=retro-gaming-112271.mp3" autoplay loop></audio>
-
-<script>
-let balance = parseInt(localStorage.getItem('balance')) || 1000000000;
-let bet = 0;
-let side = null;
-let history = JSON.parse(localStorage.getItem('history')) || [];
-let countdownInterval;
-let timeLeft = 20;
-let gameRunning = false;
-
-const balanceEl = document.getElementById('balance');
-const countdownEl = document.getElementById('countdown');
-const resultEl = document.getElementById('result');
-const historyEl = document.getElementById('history');
-const bowl = document.getElementById('bowl');
-const shakeSound = document.getElementById('shakeSound');
-const openSound = document.getElementById('openSound');
-const winSound = document.getElementById('winSound');
-const loseSound = document.getElementById('loseSound');
-
-function updateUI() {
-  balanceEl.textContent = balance.toLocaleString() + " VNĐ";
-  historyEl.textContent = "Cầu gần đây: " + history.join(" | ");
-  localStorage.setItem('balance', balance);
-  localStorage.setItem('history', JSON.stringify(history));
-}
-updateUI();
-
-function setBet(amount) {
-  bet = amount;
-  resultEl.textContent = `Bạn đặt ${amount.toLocaleString()} VNĐ`;
-}
-function allIn() {
-  bet = balance;
-  resultEl.textContent = `All-in ${balance.toLocaleString()} VNĐ!`;
-}
-function selectSide(chosen) {
-  side = chosen;
-  document.getElementById('taiBox').style.boxShadow = chosen === 'tai' ? '0 0 15px gold' : 'none';
-  document.getElementById('xiuBox').style.boxShadow = chosen === 'xiu' ? '0 0 15px gold' : 'none';
-}
-
-function startTimer() {
-  if (gameRunning) return;
-  gameRunning = true;
-  timeLeft = 20;
-  countdownEl.textContent = timeLeft;
-  countdownInterval = setInterval(() => {
-    timeLeft--;
-    countdownEl.textContent = timeLeft;
-    if (timeLeft <= 0) {
-      clearInterval(countdownInterval);
-      rollDice();
-    }
-  }, 1000);
-}
-startTimer();
-
-function rollDice() {
-  if (!side || bet <= 0) {
-    resultEl.textContent = "❗ Chọn bên và đặt cược!";
-    resetRound();
-    return;
-  }
-  if (bet > balance) {
-    resultEl.textContent = "💸 Không đủ tiền!";
-    resetRound();
-    return;
-  }
-
-  shakeSound.play();
-  bowl.classList.remove('open');
-
-  document.getElementById("dice-area").animate([
-    { transform: 'rotate(0deg)' },
-    { transform: 'rotate(360deg)' }
-  ], { duration: 1200 });
-
-  setTimeout(() => {
-    let diceValues = [];
-    const diceEls = [document.getElementById('dice1'), document.getElementById('dice2'), document.getElementById('dice3')];
-    for (let i = 0; i < 3; i++) {
-      const val = Math.floor(Math.random() * 6) + 1;
-      diceEls[i].textContent = val;
-      diceValues.push(val);
-    }
-
-    const total = diceValues.reduce((a,b)=>a+b,0);
-    const result = total >= 11 ? "tai" : "xiu";
-
-    setTimeout(() => {
-      openSound.play();
-      bowl.classList.add('open');
-
-      setTimeout(() => {
-        if (result === side) {
-          balance += bet;
-          winSound.play();
-          resultEl.textContent = `🎉 Bạn thắng! (${total} điểm - ${result.toUpperCase()})`;
-        } else {
-          balance -= bet;
-          loseSound.play();
-          resultEl.textContent = `💔 Bạn thua! (${total} điểm - ${result.toUpperCase()})`;
-        }
-        history.unshift(result.toUpperCase());
-        if (history.length > 10) history.pop();
-        updateUI();
-        resetRound();
-      }, 1500);
-    }, 1200);
-  }, 1000);
-}
-
-function resetRound() {
-  bet = 0;
-  side = null;
-  gameRunning = false;
-  setTimeout(startTimer, 4000);
-}
-</script>
 </body>
 </html>
