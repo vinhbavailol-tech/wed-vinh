@@ -1,32 +1,34 @@
-
-/* Định dạng cho thẻ h1 (Tiêu đề) */
+/* --- ĐỊNH DẠNG CHO THẺ H1 --- */
 h1 {
-    color: yellow; 
-    font-size: 24px; 
-    font-family: Arial, Helvetica, sans-serif; 
+    /* màu chữ đỏ */
+    color: red; 
+    /* căn giữa */
+    text-align: center; 
 }
 
-/*
-p {
-    color: darkblue;
-    font-style: italic; 
-    font-weight: bold; 
-    font-size: 13pt; 
-    font-family: "Times New Roman", Times, serif; 
-}
-
-*/
-/* Class p1: color: yellow (chữ vàng) */
+/* --- ĐỊNH DẠNG CHO ĐOẠN VĂN THỨ NHẤT (p class="p1") --- */
 .p1 {
+    /* màu chữ vàng */
     color: yellow; 
+    /* cỡ chữ 13 pixel */
+    font-size: 13px; 
+    /* font Arial */
+    font-family: Arial, Helvetica, sans-serif; 
     /* Thêm màu nền tối để chữ vàng dễ đọc */
-    background-color: #333; 
+    background-color: #333;
     padding: 5px;
 }
 
-/* Class p2: background: yellow (nền vàng) */
+/* --- ĐỊNH DẠNG CHO ĐOẠN VĂN THỨ HAI (p class="p2") --- */
 .p2 {
+    /* màu nền vàng */
     background-color: yellow;
+    /* in đậm */
+    font-weight: bold; 
+    /* cỡ chữ 13 pixel */
+    font-size: 13px; 
+    /* font Times New Roman */
+    font-family: "Times New Roman", Times, serif; 
     /* Thêm màu chữ đen để dễ đọc trên nền vàng */
     color: black; 
     padding: 5px;
