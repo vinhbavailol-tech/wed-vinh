@@ -1,35 +1,29 @@
-/* --- ĐỊNH DẠNG CHO THẺ H1 --- */
+/* ==================================== */
+/* Định dạng cho H1 */
+/* ==================================== */
 h1 {
-    /* màu chữ đỏ */
-    color: red; 
-    /* căn giữa */
-    text-align: center; 
+    color: red; /* Màu chữ đỏ */
+    text-align: center; /* Căn giữa */
 }
 
-/* --- ĐỊNH DẠNG CHO ĐOẠN VĂN THỨ NHẤT (p class="p1") --- */
-.p1 {
-    /* màu chữ vàng */
-    color: yellow; 
-    /* cỡ chữ 13 pixel */
-    font-size: 13px; 
-    /* font Arial */
-    font-family: Arial, Helvetica, sans-serif; 
-    /* Thêm padding và nền tối để chữ vàng dễ đọc */
-    background-color: #333;
-    padding: 5px;
+/* ==================================== */
+/* Định dạng cho đoạn P thứ nhất */
+/* ==================================== */
+p:first-of-type {
+    color: yellow; /* Màu chữ vàng */
+    font-size: 13px; /* Cỡ chữ 13 pixels */
+    font-family: Arial, sans-serif; /* Font Arial */
 }
 
-/* --- ĐỊNH DẠNG CHO ĐOẠN VĂN THỨ HAI (p class="p2") --- */
-.p2 {
-    /* màu nền vàng */
-    background-color: yellow;
-    /* in đậm */
-    font-weight: bold; 
-    /* cỡ chữ 13 pixel */
-    font-size: 13px; 
-    /* font Times New Roman */
-    font-family: "Times New Roman", Times, serif; 
-    /* Thêm màu chữ đen để dễ đọc trên nền vàng */
-    color: black; 
-    padding: 5px;
+/* ==================================== */
+/* Định dạng cho đoạn P thứ hai */
+/* ==================================== */
+p:last-of-type {
+    background-color: yellow; /* Màu nền vàng */
+    font-weight: bold; /* In đậm */
+    font-size: 13px; /* Cỡ chữ 13 pixels */
+    font-family: "Times New Roman", serif; /* Font Times New Roman */
+    
+    /* Thêm padding để màu nền bao quanh chữ đẹp hơn */
+    padding: 5px; 
 }
